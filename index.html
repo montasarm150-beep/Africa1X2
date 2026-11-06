@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111315">
+  <title>Africa1X2 — Arcade</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="icon-btn" id="menuBtn" aria-label="Ouvrir le menu">☰</button>
+    <a class="brand" href="#" aria-label="Africa1X2 accueil">AFRICA<span>1X2</span><i>✦</i></a>
+    <a class="profile profile-link" href="profil.html" aria-label="Ouvrir mon profil"><span class="score-label">SCORE<br><b id="score">0</b> PTS</span><div class="avatar">●</div></a>
+  </header>
+
+  <main>
+    <div class="section-title"><span>ARCADE</span><small>JEUX GRATUITS · POINTS FICTIFS</small></div>
+
+    <section class="hero" aria-label="Bannière arcade">
+      <div class="hero-copy">
+        <p class="eyebrow">BIENVENUE SUR</p>
+        <h1>AFRICA<br><em>ARCADE</em></h1>
+        <p>Joue, découvre et amuse-toi.</p>
+        <span class="hero-tag">100% GRATUIT · SANS MISE</span>
+      </div>
+      <div class="hero-art" aria-hidden="true"><span>🎮</span><span>🦁</span><span>⭐</span></div>
+    </section>
+
+    <nav class="categories" aria-label="Catégories">
+      <button class="category active" data-category="Tous">Tous</button>
+      <button class="category" data-category="Puzzle">Puzzle</button>
+      <button class="category" data-category="Mémoire">Mémoire</button>
+      <button class="category" data-category="Quiz">Quiz</button>
+    </nav>
+
+    <div class="toolbar">
+      <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Rechercher un jeu..." aria-label="Rechercher un jeu"></label>
+      <select id="providerSelect" aria-label="Filtrer par studio">
+        <option value="Tous">Tous les studios</option>
+        <option value="Africa Studio">Africa Studio</option>
+        <option value="Fun Lab">Fun Lab</option>
+      </select>
+    </div>
+
+    <div class="results-line"><span id="resultCount">6 jeux</span><span>CHOISIS TON JEU</span></div>
+    <section class="games-grid" id="gamesGrid" aria-live="polite"></section>
+    <p class="notice">Démo de divertissement uniquement. Aucun dépôt, pari, achat ou retrait d'argent. Les points sont fictifs et sans valeur monétaire.</p>
+  </main>
+
+  <dialog id="gameDialog">
+    <div class="dialog-head"><div><small>MINI-JEU</small><h2 id="dialogTitle">Jeu</h2></div><button class="icon-btn" id="closeDialog" aria-label="Fermer">✕</button></div>
+    <p id="dialogDescription"></p>
+    <div id="gameArea" class="game-area"></div>
+    <p class="dialog-note">Les points affichés sont fictifs et servent uniquement à la démonstration.</p>
+  </dialog>
+  <footer>© 2026 Africa1X2 · Démo arcade</footer>
+  <script src="app.js"></script>
+</body>
+</html>
