@@ -1,60 +1,71 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111315">
-  <title>Africa1X2 — Arcade</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111111">
+<title>AFRICA1X2 — Arcade</title>
+<style>
+:root{--yellow:#ffd400;--black:#101010;--panel:#202020;--muted:#bdbdbd;--red:#c74747}
+*{box-sizing:border-box}body{margin:0;background:#101010;color:#fff;font-family:Arial,Helvetica,sans-serif}
+button,input{font:inherit}button{cursor:pointer}
+.top{height:78px;background:#111;display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:5;border-bottom:1px solid #333}
+.hamb{font-size:30px;background:none;border:0;color:white;padding:0}.brand{font-weight:1000;font-size:clamp(23px,4vw,38px);letter-spacing:-1.5px}.brand span{color:var(--yellow)}.wallet{font-size:13px;text-align:right;color:#ddd;line-height:1.4}.avatar{font-size:27px;margin-left:10px}
+.wrap{max-width:1150px;margin:auto}.bar{height:86px;background:#202020;display:flex;align-items:center;justify-content:space-between;padding:0 24px;font-weight:900;font-size:25px}.bar small{font-size:20px;color:#bbb}
+.banner{margin:0;background:radial-gradient(circle at 75% 40%,#ff9a00 0,transparent 24%),linear-gradient(110deg,#07131b,#0d2635 48%,#32130d);height:300px;position:relative;overflow:hidden;display:flex;align-items:center;padding:26px 5%;border-bottom:10px solid #333}
+.banner:before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;right:7%;top:12px;background:radial-gradient(circle,#ffbd32 0 24%,#ed5b16 25% 40%,#32180c 42% 62%,transparent 63%);filter:drop-shadow(0 0 30px #ff6b00)}
+.banner:after{content:"🎃";position:absolute;right:22%;bottom:10px;font-size:clamp(90px,17vw,180px);filter:drop-shadow(0 12px 8px #000)}
+.banner-copy{position:relative;z-index:1;text-shadow:0 3px 8px #000;max-width:48%}.banner-copy .sup{font-size:clamp(14px,2vw,22px);color:#ffc44a;font-weight:900;letter-spacing:3px}.banner-copy h1{font-family:Georgia,serif;font-size:clamp(38px,7vw,78px);line-height:.9;margin:12px 0;color:#fff}.banner-copy p{font-weight:900;color:#ff9e31;font-size:clamp(20px,4vw,40px);margin:0}
+.tabs{display:flex;overflow:auto;background:#333;border-bottom:1px solid #555;scrollbar-width:none}.tabs button{flex:1;min-width:max-content;padding:20px 24px;border:1px solid #171717;background:#414141;color:white;font-weight:900;font-size:17px}.tabs button.active{background:var(--yellow);color:#111}
+.filters{display:flex;margin-top:34px;background:#383d3e}.fav,.provider{border:0;padding:17px 14px;color:#fff;font-weight:800;font-size:16px}.fav{background:#c94a4a;flex:1;text-align:left}.provider{background:#383d3e;min-width:45%;text-align:center}.provider select{background:transparent;border:0;color:white;font-weight:800;max-width:100%}.searchrow{display:flex;gap:10px;padding:18px 16px 8px}.searchrow input{width:100%;background:#242424;border:1px solid #555;color:white;border-radius:4px;padding:12px 14px;outline:none}.games{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:12px 16px 30px}.game{background:#202020;min-width:0;border:1px solid #333;position:relative;overflow:hidden}.cover{height:190px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;background:linear-gradient(135deg,#6d3b09,#f2b62d)}.cover:before,.cover:after{content:"";position:absolute;border-radius:50%;border:10px solid #ffffff22;width:210px;height:210px}.cover:after{width:145px;height:145px;border-width:5px}.cover .art{font-size:clamp(55px,8vw,90px);z-index:1;filter:drop-shadow(0 5px 4px #0008)}.cover .arttitle{position:absolute;z-index:2;bottom:12px;left:4px;right:4px;font-weight:1000;font-size:clamp(15px,2.2vw,24px);text-shadow:0 3px 5px #000;letter-spacing:1px}.game:nth-child(3n+2) .cover{background:linear-gradient(135deg,#e7a900,#f6ed25)}.game:nth-child(3n) .cover{background:linear-gradient(135deg,#630e1a,#f53d20)}.game:nth-child(4n) .cover{background:linear-gradient(135deg,#061c6d,#087dca)}.game:nth-child(5n) .cover{background:linear-gradient(135deg,#174c39,#5dc77d)}.gamefoot{background:var(--yellow);color:#111;display:flex;align-items:center;justify-content:space-between;padding:9px 10px;font-size:16px}.gamefoot b{font-weight:500}.play{border:0;background:transparent;color:#111;font-size:23px}.tag{position:absolute;top:8px;right:8px;background:var(--yellow);color:#111;font-weight:1000;padding:5px 8px;font-size:12px;z-index:2}
+.note{margin:0 16px 28px;background:#1d1d1d;border:1px solid #444;padding:16px;color:#bbb;line-height:1.5}.note strong{color:white}footer{padding:22px 16px;border-top:1px solid #333;color:#aaa;font-size:13px;text-align:center}
+.modal{position:fixed;inset:0;background:#000d;z-index:20;display:none;align-items:center;justify-content:center;padding:15px}.modal.show{display:flex}.dialog{width:min(100%,480px);background:#202020;border:1px solid #555;padding:22px;border-radius:8px;text-align:center}.dialog h2{margin-top:0}.dialog button{background:var(--yellow);color:#111;border:0;padding:11px 16px;font-weight:900;border-radius:4px;margin:5px}.dialog input{padding:11px;background:#111;border:1px solid #555;color:white;width:150px}.close{float:right!important;background:#444!important;color:white!important}.result{color:var(--yellow);min-height:28px;font-weight:bold;margin:12px}
+@media(max-width:650px){.top{height:70px;padding:0 14px}.bar{height:72px;font-size:22px;padding:0 16px}.banner{height:240px;padding:18px 4%}.banner:before{right:-7%;width:240px;height:240px}.banner:after{right:13%;font-size:115px}.banner-copy{max-width:62%}.games{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:10px}.cover{height:150px}.filters{margin-top:28px}.fav,.provider{font-size:14px;padding:14px 9px}.tabs button{padding:17px 18px}.searchrow{padding:14px 10px 5px}}
+</style></head>
 <body>
-  <header class="topbar">
-    <button class="icon-btn" id="menuBtn" aria-label="Ouvrir le menu">☰</button>
-    <a class="brand" href="#" aria-label="Africa1X2 accueil">AFRICA<span>1X2</span><i>✦</i></a>
-    <a class="profile profile-link" href="profil.html" aria-label="Ouvrir mon profil"><span class="score-label">SCORE<br><b id="score">0</b> PTS</span><div class="avatar">●</div></a>
-  </header>
-
-  <main>
-    <div class="section-title"><span>ARCADE</span><small>JEUX GRATUITS · POINTS FICTIFS</small></div>
-
-    <section class="hero" aria-label="Bannière arcade">
-      <div class="hero-copy">
-        <p class="eyebrow">BIENVENUE SUR</p>
-        <h1>AFRICA<br><em>ARCADE</em></h1>
-        <p>Joue, découvre et amuse-toi.</p>
-        <span class="hero-tag">100% GRATUIT · SANS MISE</span>
-      </div>
-      <div class="hero-art" aria-hidden="true"><span>🎮</span><span>🦁</span><span>⭐</span></div>
-    </section>
-
-    <nav class="categories" aria-label="Catégories">
-      <button class="category active" data-category="Tous">Tous</button>
-      <button class="category" data-category="Puzzle">Puzzle</button>
-      <button class="category" data-category="Mémoire">Mémoire</button>
-      <button class="category" data-category="Quiz">Quiz</button>
-    </nav>
-
-    <div class="toolbar">
-      <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Rechercher un jeu..." aria-label="Rechercher un jeu"></label>
-      <select id="providerSelect" aria-label="Filtrer par studio">
-        <option value="Tous">Tous les studios</option>
-        <option value="Africa Studio">Africa Studio</option>
-        <option value="Fun Lab">Fun Lab</option>
-      </select>
-    </div>
-
-    <div class="results-line"><span id="resultCount">6 jeux</span><span>CHOISIS TON JEU</span></div>
-    <section class="games-grid" id="gamesGrid" aria-live="polite"></section>
-    <p class="notice">Démo de divertissement uniquement. Aucun dépôt, pari, achat ou retrait d'argent. Les points sont fictifs et sans valeur monétaire.</p>
-  </main>
-
-  <dialog id="gameDialog">
-    <div class="dialog-head"><div><small>MINI-JEU</small><h2 id="dialogTitle">Jeu</h2></div><button class="icon-btn" id="closeDialog" aria-label="Fermer">✕</button></div>
-    <p id="dialogDescription"></p>
-    <div id="gameArea" class="game-area"></div>
-    <p class="dialog-note">Les points affichés sont fictifs et servent uniquement à la démonstration.</p>
-  </dialog>
-  <footer>© 2026 Africa1X2 · Démo arcade</footer>
-  <script src="app.js"></script>
-</body>
-</html>
+<header class="top"><button class="hamb" onclick="document.getElementById('menu').hidden=!document.getElementById('menu').hidden">☰</button><div class="brand">AFRICA<span>1X2</span>◉</div><div style="display:flex;align-items:center"><div class="wallet">TND 0<br>+ <b id="score">0</b> pts</div><div class="avatar">👤</div></div></header>
+<div id="menu" hidden style="background:#222;padding:15px 22px"><a href="#catalogue" style="color:#ffd400;margin-right:18px">Jeux</a><a href="#infos" style="color:white">À propos</a></div>
+<div class="bar"><span>ARCADE</span><small>❮</small></div>
+<section class="banner"><div class="banner-copy"><div class="sup">AFRICA1X2 PRÉSENTE</div><h1>GAME<br>FESTIVAL</h1><p>JOUE & AMUSE-TOI !</p></div></section>
+<div class="tabs"><button class="active" onclick="filter('Tous',this)">Toutes</button><button onclick="filter('Nouveautés',this)">Nouveautés</button><button onclick="filter('Défis',this)">Défis du jour</button><button onclick="filter('Mémoire',this)">Mémoire</button><button onclick="filter('Quiz',this)">Quiz</button></div>
+<div class="wrap" id="catalogue">
+<div class="filters"><button class="fav" onclick="showFavorites()">♡ Afficher uniquement les favoris</button><div class="provider">Fournisseur　<select id="studio" onchange="render()"><option value="Tous">Tous les jeux</option><option value="Arcade">Arcade</option><option value="Puzzle">Puzzle</option><option value="Quiz">Quiz</option></select></div></div>
+<div class="searchrow"><input id="search" placeholder="⌕  Rechercher un jeu..." oninput="render()"></div>
+<div class="games" id="games"></div>
+</div>
+<div class="note" id="infos"><strong>AFRICA1X2 · Arcade gratuite</strong><br>Jeux de démonstration et points fictifs uniquement. Aucun dépôt, pari, achat ou retrait d'argent. Les points n'ont aucune valeur monétaire.</div>
+<footer>© 2026 AFRICA1X2 · Arcade · Divertissement gratuit</footer>
+<div class="modal" id="modal"><div class="dialog"><button class="close" onclick="closeModal()">✕</button><h2 id="title">Jeu</h2><div id="area"></div></div></div>
+<script>
+const data=[
+['book','Book of Treasures','📖','Puzzle','Trouve le bon nombre','Nouveautés'],
+['fruit','All Ways Fruits','🍉','Arcade','Devine le fruit mystère','Nouveautés'],
+['seven','Lucky 7 Challenge','7️⃣','Arcade','Teste ta chance sans mise','Nouveautés'],
+['billy','Billy the Brain','🦊','Quiz','Réponds aux questions','Quiz'],
+['memory','Memory Cards','🃏','Mémoire','Retrouve les paires','Mémoire'],
+['puzzle','Puzzle Master','🧩','Puzzle','Résous le défi logique','Défis'],
+['football','Football Quiz','⚽','Quiz','Connais-tu le football ?','Quiz'],
+['rocket','Rocket Reflex','🚀','Arcade','Teste tes réflexes','Défis'],
+['crown','King of Math','👑','Puzzle','Calcul mental rapide','Défis'],
+['treasure','Treasure Hunt','💎','Puzzle','Trouve le trésor caché','Nouveautés'],
+['cars','Turbo Race Quiz','🏎️','Quiz','Défi automobile','Quiz'],
+['lion','Lion Memory','🦁','Mémoire','Entraîne ta mémoire','Mémoire']
+];
+let score=Number(localStorage.getItem('a1x2score')||0),cat='Tous',favorites=new Set(JSON.parse(localStorage.getItem('a1x2fav')||'[]')),onlyFav=false;
+function points(n){score+=n;localStorage.setItem('a1x2score',score);document.getElementById('score').textContent=score}
+function render(){let q=document.getElementById('search').value.toLowerCase(),studio=document.getElementById('studio').value;let rows=data.filter(x=>(cat==='Tous'||x[5]===cat)&&(studio==='Tous'||x[3]===studio)&&(!onlyFav||favorites.has(x[0]))&&(x[1]+' '+x[4]).toLowerCase().includes(q));document.getElementById('games').innerHTML=rows.map(x=>`<article class="game"><div class="cover"><span class="art">${x[2]}</span><span class="arttitle">${x[1].toUpperCase()}</span>${x[5]==='Nouveautés'?'<span class="tag">NOUVEAU</span>':''}</div><div class="gamefoot"><b>${x[1]}</b><button class="play" aria-label="Favori" onclick="toggleFav('${x[0]}',event)">${favorites.has(x[0])?'♥':'♡'}</button></div><button onclick="play('${x[0]}')" style="width:100%;padding:9px;background:#292929;color:white;border:0;font-weight:bold">JOUER ▶</button></article>`).join('')||'<p style="padding:20px">Aucun jeu trouvé.</p>'}
+function filter(c,b){cat=c;onlyFav=false;document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active');render()}
+function toggleFav(id,e){e.stopPropagation();favorites.has(id)?favorites.delete(id):favorites.add(id);localStorage.setItem('a1x2fav',JSON.stringify([...favorites]));render()}
+function showFavorites(){onlyFav=!onlyFav;render()}
+function openModal(title,html){document.getElementById('title').textContent=title;document.getElementById('area').innerHTML=html;document.getElementById('modal').classList.add('show')}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+function play(id){let g=data.find(x=>x[0]===id);if(id==='book'||id==='treasure'){let n=Math.ceil(Math.random()*5);openModal(g[1],`<p>Un trésor se cache derrière une case. Choisis de 1 à 5 !</p>${[1,2,3,4,5].map(i=>`<button onclick="treasure(${i},${n})">${i}</button>`).join('')}<div class="result" id="res"></div>`)}
+else if(id==='fruit'||id==='seven'){let opts=id==='fruit'?['🍉','🍋','🍇','🍒']:['7️⃣','⭐','💎','🍀'];let answer=opts[Math.floor(Math.random()*opts.length)];openModal(g[1],`<p>Choisis le symbole mystère :</p>${opts.map(x=>`<button onclick="pick('${x}','${answer}')">${x}</button>`).join('')}<div class="result" id="res"></div>`)}
+else if(id==='memory'){let a=['🍉','🚗','⭐','🐼','⚽','🍀','🎧','🦁'];a=[...a,...a].sort(()=>Math.random()-.5);let first=null,lock=false,done=0;openModal(g[1],'<p>Retrouve les 8 paires.</p><div id="cards" style="display:grid;grid-template-columns:repeat(4,1fr);gap:7px">'+a.map((x,i)=>`<button style="height:58px;font-size:23px;background:#383838;color:white;border:1px solid #555" onclick="flipCard(${i},this)"></button>`).join('')+'</div><div class="result" id="res"></div>');window.flipCard=(i,b)=>{if(lock||b.dataset.ok||b.textContent)return;b.textContent=a[i];if(!first){first=b;return}if(first.textContent===b.textContent){first.dataset.ok=b.dataset.ok='1';done++;first=null;if(done===8){document.getElementById('res').textContent='Bravo ! +15 points';points(15)}}else{lock=true;let f=first;first=null;setTimeout(()=>{f.textContent=b.textContent='';lock=false},650)}}}
+else if(id==='quiz'||id==='football'||id==='cars'||id==='billy'){let qs=[['Combien font 9 × 6 ?', '54','42'],['Quel animal est le roi de la savane ?','Lion','Tigre'],['Combien de joueurs dans une équipe de football sur le terrain ?','11','12']];let i=0,s=0;function show(){if(i===qs.length){openModal(g[1],`<h2>${s}/${qs.length}</h2><p>Quiz terminé ! +${s*4} points</p><button onclick="points(${s*4});closeModal()">Valider</button>`);return}let q=qs[i];openModal(g[1],`<p>Question ${i+1}/${qs.length}</p><h3>${q[0]}</h3><button onclick="ans(0)">${q[1]}</button><button onclick="ans(1)">${q[2]}</button>`)}window.ans=j=>{if(j===0)s++;i++;show()};show()}
+else if(id==='rocket'){openModal(g[1],'<p>Clique sur le bouton aussi vite que possible après le compte à rebours.</p><h1 id="count">3</h1><button id="go" disabled onclick="rocketClick()">ATTENDS...</button><div class="result" id="res"></div>');let c=3;window.rocketTimer=setInterval(()=>{c--;document.getElementById('count').textContent=c;if(c<=0){clearInterval(window.rocketTimer);document.getElementById('go').disabled=false;document.getElementById('go').textContent='CLIQUE !';window.rocketAt=Date.now()}},1000);window.rocketClick=()=>{let t=Date.now()-window.rocketAt;document.getElementById('res').textContent=t+' ms'+(t<500?' · +5 points':'');if(t<500)points(5);document.getElementById('go').disabled=true}}
+else{let x=3+Math.floor(Math.random()*17),y=2+Math.floor(Math.random()*9),ans=x*y;openModal(g[1],`<p>Résous ce calcul :</p><h1>${x} × ${y} = ?</h1><input id="answer" type="number"><button onclick="mathCheck(${ans})">Valider</button><div class="result" id="res"></div>`);window.mathCheck=a=>{if(Number(document.getElementById('answer').value)===a){document.getElementById('res').textContent='Correct ! +8 points';points(8)}else document.getElementById('res').textContent='Essaie encore !'}}
+}
+window.treasure=(v,n)=>{document.getElementById('res').textContent=v===n?'Trésor trouvé ! +10 points':'Pas cette case !';if(v===n)points(10)};
+window.pick=(v,a)=>{document.getElementById('res').textContent=v===a?'Bien joué ! +5 points':'Pas cette fois !';if(v===a)points(5)};
+document.getElementById('score').textContent=score;render();
+</script></body></html>
